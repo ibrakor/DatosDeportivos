@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { CabeceraComponent } from './cabecera/cabecera.component';
+import { HomeComponent } from './home/home.component';
 
 
 
 @NgModule({
   declarations: [
-    CabeceraComponent
+    CabeceraComponent,
+    HomeComponent
   ],
   exports: [
-    CabeceraComponent
+    CabeceraComponent,
+    HomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgOptimizedImage
   ]
 })
 export class ComunModule { }
