@@ -1,4 +1,4 @@
-export const partidos_data = [{
+export const PARTIDOS = [{
   "idLocal": "ATHCLU(ESP)",
   "idVisitante": "DEPORT(ESP)",
   "timeMs": 1585810194286,

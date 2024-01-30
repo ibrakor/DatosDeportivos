@@ -1,1 +1,8 @@
-<p>partidos-lista works!</p>
+<h1>Lista de partidos</h1>
+<section *ngIf="post$ | async as partidos">
+  <ul>
+    <li *ngFor="let partido of partidos ">
+      {{ partido.idLocal }}
+    </li>
+  </ul>
+</section>
