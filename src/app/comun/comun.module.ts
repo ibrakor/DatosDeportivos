@@ -3,6 +3,7 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { HomeComponent } from './home/home.component';
 import { PieComponent } from './pie/pie.component';
+import {RouterLink} from "@angular/router";
 
 
 
@@ -19,7 +20,8 @@ import { PieComponent } from './pie/pie.component';
   ],
   imports: [
     CommonModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterLink
   ]
 })
 export class ComunModule { }

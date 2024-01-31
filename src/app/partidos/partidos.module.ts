@@ -1,7 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PartidosListaComponent} from './partidos-lista/partidos-lista.component';
+import {PartidosListaComponent} from './partidos/partidos-lista/partidos-lista.component';
 import {PartidosComponent} from './partidos/partidos.component';
+import {PartidosRoutingModule} from "./partidos-routing.module";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -10,7 +12,9 @@ import {PartidosComponent} from './partidos/partidos.component';
     PartidosComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    PartidosRoutingModule,
+    FormsModule
   ]
 })
 export class PartidosModule { }

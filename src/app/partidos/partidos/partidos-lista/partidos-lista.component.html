@@ -1,0 +1,19 @@
+<h1>Lista de partidos</h1>
+<input [(ngModel)]="terminoBusqueda" placeholder="Buscar partidos">
+
+<p *ngIf="partidosFiltrados().length; else noPartidosEncontrados">Mostrando {{ partidosFiltrados().length }} partidos</p>
+<ng-template #noPartidosEncontrados>
+  <p style="color: red">No se han encontrado partidos con el valor "{{ terminoBusqueda }}"</p>
+</ng-template>
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let partido of partidosFiltrados()">
+    <i class="bi bi-calendar-week"></i>
+    <span>
+      {{ partido.timeMs | date:'d/M/yyyy H:mm' }}
+    </span>
+    <span class="ms-5">
+      {{ partido.idLocal }} - {{ partido.idVisitante }}
+    </span>
+  </li>
+</ul>

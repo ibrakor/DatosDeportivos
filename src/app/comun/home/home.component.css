@@ -15,4 +15,15 @@ img {
   justify-content: center;
   flex-direction: row;
 }
+.enlace {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.enlace:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+
 
