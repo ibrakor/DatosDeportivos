@@ -13,4 +13,8 @@ export class PartidosService {
   obtenerPartidos() {
     return of(PARTIDOS)
   }
+
+  obtenerPartidoPorMs(ms: number) {
+    return of(PARTIDOS.find(partido => partido.timeMs == ms))
+  }
 }

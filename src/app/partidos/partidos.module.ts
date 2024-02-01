@@ -4,12 +4,14 @@ import {PartidosListaComponent} from './partidos/partidos-lista/partidos-lista.c
 import {PartidosComponent} from './partidos/partidos.component';
 import {PartidosRoutingModule} from "./partidos-routing.module";
 import {FormsModule} from "@angular/forms";
+import {PartidoDetalleComponent} from './partidos/partido-detalle/partido-detalle.component';
 
 
 @NgModule({
   declarations: [
     PartidosListaComponent,
-    PartidosComponent
+    PartidosComponent,
+    PartidoDetalleComponent
   ],
   imports: [
     CommonModule,

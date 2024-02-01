@@ -7,7 +7,7 @@
 </ng-template>
 
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let partido of partidosFiltrados()">
+  <li class="list-group-item" *ngFor="let partido of partidosFiltrados()" routerLink="detalle/{{partido.timeMs}}">
     <i class="bi bi-calendar-week"></i>
     <span>
       {{ partido.timeMs | date:'d/M/yyyy H:mm' }}
