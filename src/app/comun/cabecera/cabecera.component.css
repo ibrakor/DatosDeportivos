@@ -1,3 +1,9 @@
 *{
  background-color: #d2f6f6;
 }
+
+h4.ms-3:hover {
+  cursor: pointer;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: #2064c1;
+}
