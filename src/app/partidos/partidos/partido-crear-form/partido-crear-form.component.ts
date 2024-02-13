@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Equipo} from "../../../modelos/Equipo";
 import {EquipoService} from "../../../servicios/equipo.service";
 import {Router} from "@angular/router";
 import {Partido} from "../../../modelos/Partido";
 import {PartidosService} from "../../../servicios/partidos.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ModalComponent} from "../../../comun/modal/modal.component";
 
 @Component({
   selector: 'app-partido-crear-form',
@@ -14,7 +16,8 @@ import {PartidosService} from "../../../servicios/partidos.service";
 export class PartidoCrearFormComponent {
 
   equipos: Equipo[]
-  constructor(private equipoService: EquipoService, private partidoService: PartidosService,private router: Router) {
+
+  constructor(private modal: NgbModal, private equipoService: EquipoService, private partidoService: PartidosService, private router: Router) {
     equipoService.obtenerEquipos().subscribe(result => (this.equipos = result))
   }
 
@@ -68,7 +71,13 @@ export class PartidoCrearFormComponent {
     };
 
     this.partidoService.agregarPartido(partido)
+    this.abrirModal()
+  }
 
+  abrirModal() {
+    const modalRef = this.modal.open(ModalComponent);
+    modalRef.componentInstance.title = 'Partido Guardado';
+    modalRef.componentInstance.body = 'El partido se ha guardado correctamente.';
   }
 
 }

@@ -5,6 +5,7 @@ import {HomeComponent} from './home/home.component';
 import {PieComponent} from './pie/pie.component';
 import {RouterLink} from "@angular/router";
 import {NoDisponibleComponent} from './no-disponible/no-disponible.component';
+import {ModalComponent} from './modal/modal.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {NoDisponibleComponent} from './no-disponible/no-disponible.component';
     CabeceraComponent,
     HomeComponent,
     PieComponent,
-    NoDisponibleComponent
+    NoDisponibleComponent,
+    ModalComponent
   ],
   exports: [
     CabeceraComponent,
