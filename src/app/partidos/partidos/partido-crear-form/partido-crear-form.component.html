@@ -1,0 +1,56 @@
+<h3>Nuevo partido</h3>
+<br>
+<form [formGroup]="formularioPartido" (ngSubmit)="submit()">
+  <p>Equipo Local</p>
+  <select formControlName="equipoLocal" class="form-select">
+    <option value="" disabled selected>Selecciona un equipo</option>
+    <option *ngFor="let equipo of equipos" [value]="equipo.id">
+      {{equipo.nombre}}
+    </option>
+  </select>
+  <div *ngIf="formularioPartido.get('equipoLocal')?.hasError('required') && formularioPartido.get('equipoLocal')?.touched">
+    <small class="text-danger">Este campo es obligatorio</small>
+  </div>
+  <br>
+  <br>
+  <p>Equipo Visitante</p>
+  <select formControlName="equipoVisitante" class="form-select">
+    <option value="" disabled selected>Selecciona un equipo</option>
+    <option *ngFor="let equipo of equipos" [value]="equipo.id">
+      {{equipo.nombre}}
+    </option>
+  </select>
+  <div *ngIf="formularioPartido.get('equipoVisitante')?.hasError('required') && formularioPartido.get('equipoVisitante')?.touched">
+    <small class="text-danger">Este campo es obligatorio</small>
+  </div>
+  <div *ngIf="formularioPartido.get('equipoVisitante')?.hasError('equiposIguales')">
+    <small class="text-danger">El equipo local y el equipo visitante no pueden ser el mismo</small>
+  </div>
+
+  <br>
+  <div class="row col-md-6">
+    <div class="col-md-6">
+      <div class="form-group">
+        <p>Fecha <i class="bi bi-calendar-week ms-2"></i></p>
+        <input type="date" formControlName="fecha" class="form-control">
+        <div *ngIf="formularioPartido.get('fecha')?.hasError('required') && formularioPartido.get('fecha')?.touched">
+          <small class="text-danger">Este campo es obligatorio</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <p>Hora</p>
+        <input type="time" formControlName="hora" class="form-control">
+        <div *ngIf="formularioPartido.get('hora')?.hasError('required') && formularioPartido.get('hora')?.touched">
+          <small class="text-danger">Este campo es obligatorio</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <button (click)="snackBar()" class="btn btn-btnbkeg ms-2">Cancelar</button>
+  </div>
+</form>

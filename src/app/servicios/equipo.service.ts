@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import {of} from "rxjs";
+import {EQUIPOS} from "../data/EQUIPOS";
 
 @Injectable({
   providedIn: 'root'
@@ -6,5 +8,9 @@ import {Injectable} from '@angular/core';
 export class EquipoService {
 
   constructor() {
+  }
+
+  obtenerEquipos(){
+    return of(EQUIPOS)
   }
 }

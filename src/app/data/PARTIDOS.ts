@@ -1,4 +1,6 @@
-export const PARTIDOS = [{
+import {Partido} from "../modelos/Partido";
+
+export const PARTIDOS  = [{
   "idLocal": "ATHCLU(ESP)",
   "idVisitante": "DEPORT(ESP)",
   "timeMs": 1585810194286,
