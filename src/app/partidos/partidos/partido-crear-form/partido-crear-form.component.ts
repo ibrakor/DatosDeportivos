@@ -72,6 +72,7 @@ export class PartidoCrearFormComponent {
 
     this.partidoService.agregarPartido(partido)
     this.abrirModal()
+    this.router.navigate(['partidos'])
   }
 
   abrirModal() {
