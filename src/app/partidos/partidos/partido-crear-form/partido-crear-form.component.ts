@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {Equipo} from "../../../modelos/Equipo";
 import {EquipoService} from "../../../servicios/equipo.service";
 import {Router} from "@angular/router";
@@ -17,18 +17,18 @@ export class PartidoCrearFormComponent {
 
   equipos: Equipo[]
 
-  constructor(private modal: NgbModal, private equipoService: EquipoService, private partidoService: PartidosService, private router: Router) {
+  constructor(private modal: NgbModal, private equipoService: EquipoService, private partidoService: PartidosService, private router: Router, private fb: FormBuilder) {
     equipoService.obtenerEquipos().subscribe(result => (this.equipos = result))
   }
 
-  formularioPartido = new FormGroup({
-    equipoLocal : new FormControl('',[Validators.required]),
-    equipoVisitante: new FormControl('',[Validators.required]),
-    fecha: new FormControl('',[Validators.required]),
-    hora: new FormControl('',[Validators.required]),
+  formularioPartido = this.fb.group({
+    equipoLocal: ['', [Validators.required]],
+    equipoVisitante: ['', [Validators.required]],
+    fecha: ['', [Validators.required]],
+    hora: ['', [Validators.required]],
   })
 
-  validarFormulario(){
+  private validarFormulario() {
     if (this.formularioPartido.valid){
       return this.comprobarEquipos();
     } else {
