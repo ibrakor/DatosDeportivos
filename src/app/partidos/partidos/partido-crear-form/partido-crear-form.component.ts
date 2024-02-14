@@ -67,7 +67,8 @@ export class PartidoCrearFormComponent {
     const partido: Partido = {
       idLocal: this.formularioPartido.value.equipoLocal!,
       idVisitante: this.formularioPartido.value.equipoVisitante!,
-      timeMs: timeMs
+      timeMs: timeMs,
+
     };
 
     this.partidoService.agregarPartido(partido)

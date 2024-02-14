@@ -11,7 +11,7 @@ import {Location} from "@angular/common";
 })
 export class PartidoDetalleComponent implements OnInit {
 
-  Partido: Partido
+  partido: Partido
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +27,17 @@ export class PartidoDetalleComponent implements OnInit {
   obtenerPartido() {
     const ms = +this.route.snapshot.paramMap.get('id')!!
     this.partidoService.obtenerPartidoPorMs(ms).subscribe(partido =>
-      this.Partido = partido!!)
+      this.partido = partido!!)
+  }
+
+  contarGolesPorEquipo(equipoId: string) {
+    let goles = 0
+    for (let gol of this.partido.goles!) {
+      if (gol.idParticipante == equipoId) {
+        goles++
+      }
+    }
+    return goles
   }
 
 }
