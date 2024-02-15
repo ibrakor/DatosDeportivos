@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./comun/home/home.component";
 import {PartidosComponent} from "./partidos/partidos/partidos.component";
 import {NoDisponibleComponent} from "./comun/no-disponible/no-disponible.component";
+import {EquiposComponent} from "./equipos/equipos/equipos.component";
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
     component: PartidosComponent,
     loadChildren: () => import('./partidos/partidos.module').then(m => m.PartidosModule)
 
+  },
+  {
+    path: 'equipos',
+    component: EquiposComponent,
+    loadChildren: () => import('./equipos/equipos.module').then(m => m.EquiposModule)
   }
 ];
 

@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Partido} from "../../../modelos/Partido";
+import {Gol, Partido} from "../../../modelos/Partido";
 import {ActivatedRoute} from "@angular/router";
 import {PartidosService} from "../../../servicios/partidos.service";
-import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-partido-detalle',
@@ -15,8 +14,7 @@ export class PartidoDetalleComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private partidoService: PartidosService,
-    private location: Location
+    private partidoService: PartidosService
   ) {
   }
 
@@ -30,14 +28,21 @@ export class PartidoDetalleComponent implements OnInit {
       this.partido = partido!!)
   }
 
-  contarGolesPorEquipo(equipoId: string) {
-    let goles = 0
+  obtenerGoles(equipoId: string) {
+    let goles: Gol[] = []
     for (let gol of this.partido.goles!) {
       if (gol.idParticipante == equipoId) {
-        goles++
+        goles.push(gol)
       }
     }
+    goles = goles.sort((a, b) => a.timeMs - b.timeMs)
     return goles
+  }
+
+  calcularMinutoSuceso(tiempoMs: number): number {
+    const diferenciaEnMs = tiempoMs - this.partido.timeMs;
+    const diferenciaEnMinutos = Math.floor(diferenciaEnMs / (100 * 60));
+    return Math.abs(diferenciaEnMinutos);
   }
 
 }

@@ -1,12 +1,23 @@
 <h3 routerLink="/partidos"><i class="bi bi-arrow-left"></i> Volver a la lista</h3>
 <br>
-<div class="center-content">
+<div class="center-content" style="margin: 0 15%">
   <h3><i class="bi bi-calendar-week"></i> {{ this.partido.timeMs | date:'d/M/yyyy H:mm' }}</h3>
   <br>
-  <div>
-    <h5>{{ partido.idLocal }}</h5>
-    <h5>{{ contarGolesPorEquipo(partido.idLocal) }}-{{ contarGolesPorEquipo(partido.idVisitante) }}</h5>
-    <h5>{{ partido.idVisitante }}</h5>
+  <div class="marcador">
+    <h4>{{ partido.idLocal }}</h4>
+    <h3>{{ obtenerGoles(partido.idLocal).length }}-{{ obtenerGoles(partido.idVisitante).length }}</h3>
+    <h4>{{ partido.idVisitante }}</h4>
+  </div>
+  <div class="marcador">
+    <div class="goles">
+      <i class="bi bi-dribbble" *ngFor="let gol of obtenerGoles(partido.idLocal)" style="font-size:20px; color: green;">
+        {{ calcularMinutoSuceso(gol.timeMs) }}
+      </i>
+    </div>
+    <div class="goles">
+      <i class="bi bi-dribbble" *ngFor="let gol of obtenerGoles(partido.idVisitante)"
+         style="font-size:20px; color: green">{{ calcularMinutoSuceso(gol.timeMs) }}</i>
+    </div>
   </div>
 
 
