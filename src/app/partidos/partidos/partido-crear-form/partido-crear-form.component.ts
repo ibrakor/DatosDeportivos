@@ -29,7 +29,7 @@ export class PartidoCrearFormComponent {
   })
 
   private validarFormulario() {
-    if (this.formularioPartido.valid){
+    if (this.formularioPartido.valid) {
       return this.comprobarEquipos();
     } else {
       return false
@@ -37,18 +37,18 @@ export class PartidoCrearFormComponent {
   }
 
 
-  comprobarEquipos(){
-     if (this.formularioPartido.value.equipoLocal != this.formularioPartido.value.equipoVisitante){
-       this.formularioPartido.get('equipoVisitante')?.setErrors({ 'equiposIguales': false })
-       return  true
+  comprobarEquipos() {
+    if (this.formularioPartido.value.equipoLocal != this.formularioPartido.value.equipoVisitante) {
+      this.formularioPartido.get('equipoVisitante')?.setErrors({'equiposIguales': false})
+      return true
     } else {
-       this.formularioPartido.get('equipoVisitante')?.setErrors({ 'equiposIguales': true })
-       return  false
+      this.formularioPartido.get('equipoVisitante')?.setErrors({'equiposIguales': true})
+      return false
     }
   }
 
-  submit(){
-    if (this.validarFormulario()){
+  submit() {
+    if (this.validarFormulario()) {
       this.guardarPartido()
     } else {
 

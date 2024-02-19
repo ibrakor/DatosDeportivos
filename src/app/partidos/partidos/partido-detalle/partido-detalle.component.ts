@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Gol, Partido} from "../../../modelos/Partido";
-import {ActivatedRoute} from "@angular/router";
+import {Gol, Partido, Tarjeta} from "../../../modelos/Partido";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PartidosService} from "../../../servicios/partidos.service";
+import {ModalComponent} from "../../../comun/modal/modal.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-partido-detalle',
@@ -14,7 +16,9 @@ export class PartidoDetalleComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private partidoService: PartidosService
+    private partidoService: PartidosService,
+    private modal: NgbModal,
+    private router: Router
   ) {
   }
 
@@ -39,10 +43,32 @@ export class PartidoDetalleComponent implements OnInit {
     return goles
   }
 
+  obtenerTarjetas(equipoId: string) {
+    let tarjetas: Tarjeta[] = []
+    for (let tarjeta of this.partido.tarjetas!) {
+      if (tarjeta.idParticipante == equipoId) {
+        tarjetas.push(tarjeta)
+      }
+    }
+    tarjetas = tarjetas.sort((a, b) => a.timeMs - b.timeMs)
+    return tarjetas
+  }
+
   calcularMinutoSuceso(tiempoMs: number): number {
     const diferenciaEnMs = tiempoMs - this.partido.timeMs;
     const diferenciaEnMinutos = Math.floor(diferenciaEnMs / (100 * 60));
     return Math.abs(diferenciaEnMinutos);
   }
 
+  eliminarPartido() {
+    this.partidoService.eliminarPartido(this.partido.timeMs)
+    this.abrirModal()
+    this.router.navigate(['partidos'])
+  }
+
+  abrirModal() {
+    const modalRef = this.modal.open(ModalComponent);
+    modalRef.componentInstance.title = 'Partido eliminado';
+    modalRef.componentInstance.body = 'El partido se ha eliminado correctamente.';
+  }
 }

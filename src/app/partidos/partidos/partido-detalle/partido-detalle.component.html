@@ -1,4 +1,7 @@
-<h3 routerLink="/partidos"><i class="bi bi-arrow-left"></i> Volver a la lista</h3>
+<div style="display: flex; justify-content: space-between">
+  <h3 routerLink="/partidos"><i class="bi bi-arrow-left"></i> Volver a la lista</h3>
+  <button (click)="eliminarPartido()" class="btn btn-danger">Borrar partido</button>
+</div>
 <br>
 <div class="center-content" style="margin: 0 15%">
   <h3><i class="bi bi-calendar-week"></i> {{ this.partido.timeMs | date:'d/M/yyyy H:mm' }}</h3>
@@ -13,10 +16,31 @@
       <i class="bi bi-dribbble" *ngFor="let gol of obtenerGoles(partido.idLocal)" style="font-size:20px; color: green;">
         {{ calcularMinutoSuceso(gol.timeMs) }}
       </i>
+      <div class="goles">
+        <div *ngFor="let tarjeta of obtenerTarjetas(partido.idLocal)" style="margin-left: -5px">
+          <img *ngIf="tarjeta.tipoTarjeta === 'ROJA'" src="https://cdn-icons-png.flaticon.com/512/4768/4768714.png"
+               width="30px">
+          <img *ngIf="tarjeta.tipoTarjeta === 'AMARILLA'" src="https://cdn-icons-png.flaticon.com/512/4768/4768720.png"
+               width="30px">
+          {{ calcularMinutoSuceso(tarjeta.timeMs) }}
+        </div>
+
+      </div>
     </div>
+
     <div class="goles">
       <i class="bi bi-dribbble" *ngFor="let gol of obtenerGoles(partido.idVisitante)"
          style="font-size:20px; color: green">{{ calcularMinutoSuceso(gol.timeMs) }}</i>
+      <div class="goles">
+        <div *ngFor="let tarjeta of obtenerTarjetas(partido.idVisitante)" style="margin-left: -5px">
+          <img *ngIf="tarjeta.tipoTarjeta === 'ROJA'" src="https://cdn-icons-png.flaticon.com/512/4768/4768714.png"
+               width="30px">
+          <img *ngIf="tarjeta.tipoTarjeta === 'AMARILLA'" src="https://cdn-icons-png.flaticon.com/512/4768/4768720.png"
+               width="30px">
+          {{ calcularMinutoSuceso(tarjeta.timeMs) }}
+        </div>
+
+      </div>
     </div>
   </div>
 

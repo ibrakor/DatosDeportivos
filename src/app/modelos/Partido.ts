@@ -2,7 +2,8 @@ export interface Partido {
   idLocal: string;
   idVisitante: string;
   timeMs: number;
-  goles?: Gol[] | undefined
+  goles?: Gol[]
+  tarjetas?: Tarjeta[]
 }
 
 export interface Gol {
