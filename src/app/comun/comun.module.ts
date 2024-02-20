@@ -3,7 +3,7 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {CabeceraComponent} from './cabecera/cabecera.component';
 import {HomeComponent} from './home/home.component';
 import {PieComponent} from './pie/pie.component';
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 import {NoDisponibleComponent} from './no-disponible/no-disponible.component';
 import {ModalComponent} from './modal/modal.component';
 
@@ -24,7 +24,8 @@ import {ModalComponent} from './modal/modal.component';
   imports: [
     CommonModule,
     NgOptimizedImage,
-    RouterLink
+    RouterLink,
+    RouterLinkActive
   ]
 })
 export class ComunModule { }
